@@ -1,7 +1,7 @@
 Summary:	C library for executing name service queries asynchronously
 Name:		libasyncns
 Version:	0.8
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://0pointer.de/lennart/projects/libasyncns/%{name}-%{version}.tar.gz
@@ -53,6 +53,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -68,7 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libasyncns.so
-%{_libdir}/libasyncns.la
 %{_includedir}/asyncns.h
 %{_pkgconfigdir}/libasyncns.pc
 
